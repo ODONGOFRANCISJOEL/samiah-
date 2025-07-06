@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shamiah Touring Company - Luxury Travel Experiences</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: #000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #f39c12;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #f39c12;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #f39c12;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #f1f1f1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .reviews-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .review-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .review {
+            min-width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .review-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .review-content::before {
+            content: '\201C';
+            font-size: 5rem;
+            color: #f39c12;
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: #f39c12;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #f1f1f1;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f39c12;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #fff;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #e67e22;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #f39c12;
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            margin-right: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #f39c12;
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: #000;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Shamiah<span>Touring</span></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Luxury Travel With Shamiah Touring</h1>
+            <p>Experience the ultimate in comfort and style with our premium Mercedes fleet. Whether for business or
+                leisure, we provide exceptional service for all your transportation needs.</p>
+            <a href="#contact" class="btn">Book Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Premium Travel Partner</h3>
+                    <p>Shamiah Touring Company has been providing luxury transportation services since 2010. We pride
+                        ourselves on delivering exceptional service with the highest standards of safety, comfort, and
+                        reliability.</p>
+                    <p>Our fleet of late-model Mercedes vehicles is meticulously maintained to ensure your journey is as
+                        smooth as possible. From airport transfers to corporate events, weddings to city tours, we cater
+                        to all your transportation needs.</p>
+                    <p>Our professional chauffeurs are trained to provide discreet, courteous service while ensuring you
+                        reach your destination on time, every time.</p>
+                </div>
+                <div class="about-image">
+                    <img src="benzo.jpg" alt="Random car image" />
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                            alt="Airport Transfer">
+                    </div>
+                    <div class="service-content">
+                        <h3>Airport Transfers</h3>
+                        <p>Timely and reliable airport pickups and drop-offs with flight tracking for any delays.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                            alt="Corporate Travel">
+                    </div>
+                    <div class="service-content">
+                        <h3>Corporate Travel</h3>
+                        <p>Professional transportation for business meetings, events, and executive travel.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                            alt="Wedding Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Wedding Services</h3>
+                        <p>Make your special day even more memorable with our luxury wedding transportation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Reviews</h2>
+            </div>
+            <div class="reviews-container">
+                <div class="review-slider" id="review-slider">
+                    <div class="review">
+                        <div class="review-content">
+                            <p class="review-text">"Shamiah Touring provided exceptional service for our corporate
+                                event. The Mercedes was immaculate and the driver was professional and punctual. Highly
+                                recommend!"</p>
+                            <div class="review-author">
+                                <div class="author-img">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D.">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Aswito .</h4>
+                                    <p>Corporate Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review">
+                        <div class="review-content">
+                            <p class="review-text">"Used Shamiah for our wedding transportation and couldn't be happier.
+                                The white Mercedes was stunning and the driver went above and beyond to make our day
+                                special."</p>
+                            <div class="review-author">
+                                <div class="author-img">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M.">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Dada.</h4>
+                                    <p>Wedding Client</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review">
+                        <div class="review-content">
+                            <p class="review-text">"As a frequent business traveler, I rely on Shamiah for all my
+                                airport transfers. Their reliability and comfort make them my first choice every time."
+                            </p>
+                            <div class="review-author">
+                                <div class="author-img">
+                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael T.">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Romeo Russell.</h4>
+                                    <p>Business Traveler</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <div class="slider-dot active" data-index="0"></div>
+                    <div class="slider-dot" data-index="1"></div>
+                    <div class="slider-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p>Nairobi,City</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <p>+254790670917</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p>gladysshamiah@gmail.com
+                                @shamiahtouring.com</p>
+                        </div>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 10:00 PM</p>
+                    <p>Saturday - Sunday: 9:00 AM - 11:00 PM</p>
+                </div>
+                <div class="contact-form">
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="airport">Airport Transfer</option>
+                                <option value="corporate">Corporate Travel</option>
+                                <option value="wedding">Wedding Service</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Booking Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Shamiah Touring</h3>
+                    <p>Providing premium transportation services with luxury Mercedes vehicles since 2010. Committed to
+                        excellence in every journey.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Airport Transfers</a></li>
+                        <li><a href="#">Corporate Travel</a></li>
+                        <li><a href="#">Wedding Services</a></li>
+                        <li><a href="#">City Tours</a></li>
+                        <li><a href="#">Special Events</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Shamiah Touring Company. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Review Slider
+        const slider = document.getElementById('review-slider');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentIndex = 0;
+
+        function showReview(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+
+            // Update active dot
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+
+            currentIndex = index;
+        }
+
+        // Dot click events
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showReview(index);
+            });
+        });
+
+        // Auto slide
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % dots.length;
+            showReview(currentIndex);
+        }, 5000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const bookingForm = document.getElementById('booking-form');
+        bookingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+
+            // In a real application, you would send this data to a server
+            alert(`Thank you, ${name}! Your booking request for ${service} has been received. We will contact you at ${email} shortly.`);
+
+            // Reset form
+            bookingForm.reset();
+        });
+    </script>
+</body>
+
+</html>
